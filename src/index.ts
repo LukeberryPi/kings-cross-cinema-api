@@ -13,6 +13,12 @@ import {
 
 const app = new Hono();
 
+app.get("/", (c) =>
+  c.text(
+    "Welcome to the 2025 King's Cross Cinema API. Check out how to use the endpoints at https://github.com/LukeberryPi/kings-cross-cinema-api. This API is not official or affiliated with King's Cross Cinema or Everyman on the Canal.",
+  ),
+);
+
 app.get("/movies", zValidator("query", movieQuerySchema), async (c) => {
   const { date, time } = c.req.valid("query");
 
